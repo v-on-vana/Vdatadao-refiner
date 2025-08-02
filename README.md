@@ -1,6 +1,6 @@
-# Vana Data Refinement Template
+# V!DATADAO Instagram Meta Export Data Refinement
 
-This repository serves as a template for creating Dockerized *data refinement instructions* that transform raw user data into normalized (and potentially anonymized) SQLite-compatible databases, so data in Vana can be querying by Vana's Query Engine.
+This repository contains Dockerized _data refinement instructions_ that transform raw Instagram Meta Export user data into normalized (and potentially anonymized) SQLite-compatible databases, so data in Vana can be queried by Vana's Query Engine.
 
 ## Overview
 
@@ -23,17 +23,17 @@ Here is an overview of the data refinement process on Vana.
 ## Project Structure
 
 - `refiner/`: Contains the main refinement logic
-    - `refine.py`: Core refinement implementation
-    - `config.py`: Environment variables and settings needed to run your refinement
-    - `__main__.py`: Entry point for the refinement execution
-    - `models/`: Pydantic and SQLAlchemy data models (for both unrefined and refined data)
-    - `transformer/`: Data transformation logic
-    - `utils/`: Utility functions for encryption, IPFS upload, etc.
+  - `refine.py`: Core refinement implementation
+  - `config.py`: Environment variables and settings needed to run your refinement
+  - `__main__.py`: Entry point for the refinement execution
+  - `models/`: Pydantic and SQLAlchemy data models (for both unrefined and refined data)
+  - `transformer/`: Data transformation logic
+  - `utils/`: Utility functions for encryption, IPFS upload, etc.
 - `input/`: Contains raw data files to be refined
 - `output/`: Contains refined outputs:
-    - `schema.json`: Database schema definition
-    - `db.libsql`: SQLite database file
-    - `db.libsql.pgp`: Encrypted database file
+  - `schema.json`: Database schema definition
+  - `db.libsql`: SQLite database file
+  - `db.libsql.pgp`: Encrypted database file
 - `Dockerfile`: Defines the container image for the refinement task
 - `requirements.txt`: Python package dependencies
 
@@ -61,9 +61,9 @@ OUTPUT_DIR=output
 REFINEMENT_ENCRYPTION_KEY=0x1234
 
 # Schema configuration
-SCHEMA_NAME=Google Drive Analytics
-SCHEMA_VERSION=0.0.1
-SCHEMA_DESCRIPTION=Schema for the Google Drive DLP, representing some basic analytics of the Google user
+SCHEMA_NAME=Instagram Meta Export Analytics
+SCHEMA_VERSION=1.0.0
+SCHEMA_DESCRIPTION=Schema for the Instagram Meta Export DLP, representing comprehensive Instagram user data including profile, metrics, activities and security information
 SCHEMA_DIALECT=sqlite
 
 # IPFS configuration
@@ -104,4 +104,3 @@ If you have suggestions for improving this template, please open an issue or sub
 ## License
 
 [MIT License](LICENSE)
-
