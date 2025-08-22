@@ -14,7 +14,7 @@ from refiner.models.refined import (
 )
 from refiner.models.unrefined import InstagramExport
 from refiner.utils.date import parse_timestamp
-from refiner.utils.pii import mask_email
+from refiner.utils.pii import mask_email, mask_full_name, mask_username, mask_wallet_address, mask_birth_date
 from datetime import datetime
 
 
@@ -46,9 +46,9 @@ class InstagramTransformer(DataTransformer):
 
         user = InstagramUser(
             contribution_id=unrefined_data.contribution_id,
-            wallet_address=unrefined_data.contributor.wallet_address,
+            wallet_address=mask_wallet_address(unrefined_data.contributor.wallet_address),
             contributor_email=mask_email(unrefined_data.contributor.email),
-            contributor_name=unrefined_data.contributor.name,
+            contributor_name=mask_full_name(unrefined_data.contributor.name),
             contributor_locale=unrefined_data.contributor.locale,
             created_at=created_at,
             updated_at=updated_at,
@@ -57,11 +57,11 @@ class InstagramTransformer(DataTransformer):
 
         profile = InstagramProfile(
             contribution_id=unrefined_data.contribution_id,
-            username=unrefined_data.data.profile.username,
-            display_name=unrefined_data.data.profile.display_name,
+            username=mask_username(unrefined_data.data.profile.username),
+            display_name=mask_full_name(unrefined_data.data.profile.display_name),
             email=mask_email(unrefined_data.data.profile.email),
             account_type=unrefined_data.data.profile.account_type,
-            date_of_birth=unrefined_data.data.profile.date_of_birth,
+            date_of_birth=mask_birth_date(unrefined_data.data.profile.date_of_birth),
             phone_confirmed=unrefined_data.data.profile.phone_confirmed,
             private_account=unrefined_data.data.profile.private_account,
         )
@@ -83,7 +83,7 @@ class InstagramTransformer(DataTransformer):
         for following in unrefined_data.data.activities.following_list:
             following_record = InstagramFollowing(
                 contribution_id=unrefined_data.contribution_id,
-                username=following.username,
+                username=mask_username(following.username),
                 followed_at=parse_timestamp(following.followed_at),
             )
             models.append(following_record)
@@ -91,7 +91,7 @@ class InstagramTransformer(DataTransformer):
         for like in unrefined_data.data.activities.likes_given:
             like_record = InstagramLike(
                 contribution_id=unrefined_data.contribution_id,
-                target_username=like.target_username,
+                target_username=mask_username(like.target_username),
                 count=like.count,
                 last_activity=parse_timestamp(like.last_activity),
             )
@@ -112,7 +112,7 @@ class InstagramTransformer(DataTransformer):
             comment_record = InstagramComment(
                 contribution_id=unrefined_data.contribution_id,
                 timestamp=parse_timestamp(comment.timestamp),
-                target_username=comment.target_username,
+                target_username=mask_username(comment.target_username),
             )
             models.append(comment_record)
 
