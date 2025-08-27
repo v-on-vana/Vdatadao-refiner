@@ -14,7 +14,7 @@ from refiner.models.refined import (
 )
 from refiner.models.unrefined import InstagramExport
 from refiner.utils.date import parse_timestamp
-from refiner.utils.pii import mask_email, mask_full_name, mask_username, mask_wallet_address, mask_birth_date
+from refiner.utils.pii import mask_email, mask_full_name, mask_username, mask_wallet_address, mask_birth_date, process_raw_export_safely
 from datetime import datetime
 
 
@@ -128,6 +128,13 @@ class InstagramTransformer(DataTransformer):
             unrefined_data.metadata.collection_date.replace("Z", "+00:00")
         )
 
+        cleaned_raw_data = None
+        if unrefined_data.data.raw_export_data:
+            raw_export_dict = unrefined_data.data.raw_export_data.model_dump()
+            note = raw_export_dict.pop('note', '')
+            if raw_export_dict:
+                cleaned_raw_data = process_raw_export_safely(raw_export_dict)
+        
         metadata = InstagramExportMetadata(
             contribution_id=unrefined_data.contribution_id,
             version=unrefined_data.metadata.version,
@@ -149,6 +156,7 @@ class InstagramTransformer(DataTransformer):
             source_type=unrefined_data.data.source_type,
             extraction_method=unrefined_data.data.extraction_method,
             raw_export_note=unrefined_data.data.raw_export_data.note,
+            raw_export_data_json=cleaned_raw_data,
         )
         models.append(metadata)
 
