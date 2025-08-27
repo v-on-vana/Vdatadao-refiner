@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import Optional, List, Dict, Any
 from pydantic import BaseModel
 
 
@@ -69,6 +69,9 @@ class Security(BaseModel):
 
 class RawExportData(BaseModel):
     note: str
+    
+    class Config:
+        extra = "allow"
 
 
 class FolderStructure(BaseModel):
@@ -90,11 +93,11 @@ class InstagramMetadata(BaseModel):
     collection_date: str
     data_type: str
     processing_timestamp: int
-    extraction_completeness: int
+    extraction_completeness: float
     folder_structure: FolderStructure
     privacy_settings: PrivacySettings
-    quality_score: int
-    data_freshness: int
+    quality_score: float
+    data_freshness: float
 
 
 class InstagramData(BaseModel):

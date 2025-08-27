@@ -8,6 +8,7 @@ from sqlalchemy import (
     ForeignKey,
     DateTime,
     Text,
+    JSON,
 )
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
@@ -156,18 +157,19 @@ class InstagramExportMetadata(Base):
     collection_date = Column(DateTime, nullable=False)
     data_type = Column(String, nullable=False)
     processing_timestamp = Column(Integer, nullable=False)
-    extraction_completeness = Column(Integer, nullable=False)
+    extraction_completeness = Column(Float, nullable=False)
     meta_folder_id = Column(String, nullable=False)
     instagram_folder_id = Column(String, nullable=False)
     instagram_folder_name = Column(String, nullable=False)
     contains_pii = Column(Boolean, nullable=False)
     anonymization_level = Column(String, nullable=False)
     retention_policy = Column(String, nullable=False)
-    quality_score = Column(Integer, nullable=False)
-    data_freshness = Column(Integer, nullable=False)
+    quality_score = Column(Float, nullable=False)
+    data_freshness = Column(Float, nullable=False)
     platform = Column(String, nullable=False)
     source_type = Column(String, nullable=False)
     extraction_method = Column(String, nullable=False)
     raw_export_note = Column(Text, nullable=True)
+    raw_export_data_json = Column(JSON, nullable=True)
 
     user = relationship("InstagramUser", back_populates="export_metadata")
