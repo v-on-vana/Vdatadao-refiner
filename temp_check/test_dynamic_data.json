@@ -1,0 +1,167 @@
+{
+  "contribution_id": "meta_export_1742211639877",
+  "contributor": {
+    "wallet_address": "0x742d35Cc6473C4F5D1C82c8c6E8b7b8a9F4C1D2E",
+    "email": "user@example.com",
+    "name": "John Doe",
+    "locale": "en"
+  },
+  "data": {
+    "platform": "instagram",
+    "source_type": "meta_export",
+    "extraction_method": "google_drive_api",
+    "profile": {
+      "username": "johndoe_insta",
+      "display_name": "John Doe",
+      "email": "john@instagram.com",
+      "account_type": "Private",
+      "date_of_birth": "1995-03-15",
+      "phone_confirmed": true,
+      "private_account": true
+    },
+    "metrics": {
+      "posts_count": 156,
+      "following_count": 342,
+      "follower_count": 0,
+      "likes_given_count": 2847,
+      "comments_count": 134,
+      "account_age_days": 2847,
+      "total_interactions": 2981,
+      "has_story_activity": false
+    },
+    "activities": {
+      "following_list": [
+        {
+          "username": "friend_username",
+          "followed_at": 1640995200
+        }
+      ],
+      "likes_given": [
+        {
+          "target_username": "some_user",
+          "count": 15,
+          "last_activity": 1701234567
+        }
+      ],
+      "posts_created": [
+        {
+          "creation_timestamp": 1701234567,
+          "title": "My Instagram Post",
+          "source_app": "instagram",
+          "has_photo": true,
+          "has_camera_metadata": false
+        }
+      ],
+      "comments_made": [
+        {
+          "timestamp": 1701234567,
+          "target_username": "another_user"
+        }
+      ]
+    },
+    "security": {
+      "last_login": 1701234567,
+      "contact_syncing": true,
+      "has_shared_live_video": false
+    },
+    "raw_export_data": {
+      "note": "Instagram Meta Export Data with Dynamic Content",
+      "raw_data": {
+        "account_info": {
+          "username": "johndoe",
+          "creation_date": "2020-01-01",
+          "last_updated": "2023-12-01",
+          "real_name": "John Doe Smith"
+        },
+        "media_data": {
+          "posts": [
+            {
+              "media_id": "123456789",
+              "creation_timestamp": 1638360000,
+              "caption": "Bu harika bir tatil fotoğrafı! @friend1 ile beraber geziyoruz.",
+              "likes_count": 25,
+              "comments_count": 3,
+              "location": "Istanbul, Turkey"
+            },
+            {
+              "media_id": "987654321",
+              "creation_timestamp": 1638361000,
+              "caption": "Yeni ev telefon: +90 555 123 4567",
+              "likes_count": 12,
+              "comments_count": 1
+            }
+          ],
+          "stories": [
+            {
+              "story_id": "987654321",
+              "creation_timestamp": 1638360100,
+              "viewer_count": 89,
+              "content": "Gizli mesaj: Beni ara +1-555-123-4567"
+            }
+          ]
+        },
+        "activity_logs": {
+          "login_history": [
+            {"timestamp": 1638360000, "location": "Istanbul, Turkey", "ip_address": "192.168.1.1"},
+            {"timestamp": 1638320000, "location": "Ankara, Turkey", "device_info": "iPhone 12"}
+          ],
+          "search_history": [
+            {"query": "john doe kişisel bilgiler", "timestamp": 1638360050},
+            {"query": "nasıl gizli mesaj gönderilir", "timestamp": 1638360080},
+            {"query": "istanbul restaurants", "timestamp": 1638360090}
+          ],
+          "messages": [
+            {
+              "to_user": "secret_friend",
+              "message": "Merhaba! Bu gizli bir mesaj. Email: john.secret@gmail.com",
+              "timestamp": 1638360100
+            }
+          ]
+        },
+        "connections": {
+          "followers": [
+            {"username": "friend1", "follow_date": 1638300000, "real_name": "Alice Johnson"},
+            {"username": "friend2", "follow_date": 1638310000, "mutual_friends": 15}
+          ],
+          "following": [
+            {"username": "celebrity1", "follow_date": 1638290000},
+            {"username": "private_account", "follow_date": 1638295000}
+          ]
+        },
+        "personal_data": {
+          "phone_numbers": ["+90 555 123 4567", "+1-555-987-6543"],
+          "email_addresses": ["john@example.com", "john.doe@work.com"],
+          "home_address": {
+            "street": "123 Gizli Sokak",
+            "city": "Istanbul",
+            "country": "Turkey",
+            "postal_code": "34000"
+          }
+        }
+      }
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "schema_version": "vana_datadao_v1",
+    "source": "Google Drive - Meta Data Export",
+    "collection_date": "2025-01-20T15:30:45.123Z",
+    "data_type": "instagram_meta_export",
+    "processing_timestamp": 1742211639877,
+    "extraction_completeness": 85,
+    "folder_structure": {
+      "metaFolderId": "1BxGt123...",
+      "instagramFolderId": "1CyHu456...",
+      "instagramFolderName": "instagram-vdatadao-2025-01-20"
+    },
+    "privacy_settings": {
+      "contains_pii": true,
+      "anonymization_level": "partial",
+      "retention_policy": "user_controlled"
+    },
+    "quality_score": 92,
+    "data_freshness": 85
+  },
+  "created_at": "2025-01-20T15:30:45.123Z",
+  "updated_at": "2025-01-20T15:30:45.123Z"
+}
